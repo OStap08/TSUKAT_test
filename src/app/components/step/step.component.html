@@ -1,0 +1,53 @@
+<section class="step-section">
+  <div class="image-block" [ngClass]="{'grid': questionIndex === 1}">
+    <ng-container *ngIf="stepData.imgs">
+      <ng-container *ngFor="let img of stepData.imgs;">
+        <img src="{{img}}" alt="" [ngClass]="{'cursor-pointer':questionIndex === 1}" (click)="answerIsImg($event)">
+      </ng-container>
+    </ng-container>
+    <div [hidden]="!stepData?.video">
+      <iframe  #myIframe width="800" height="500" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+  <div class="question-block">
+    <div>
+      <div>
+        <ng-container *ngFor="let item of answersArr; let idx = index;">
+          <span class="steps"
+                [ngClass]="{'active': idx === questionIndex,
+                            'question-is-true': item.questionIsTrue,
+                            'question-is-false': item.questionIsTrue === false}"></span>
+        </ng-container>
+      </div>
+      <div>{{questionIndex + 1}}/{{stepsLength}} Question {{questionIndex + 1}}</div>
+      <p>{{stepData.questions}}</p>
+      <ng-container *ngIf="stepData.answerOptions" >
+        <ng-container *ngFor="let option of stepData.answerOptions; let idx = index;">
+          <label [hidden]="questionIndex != 0">
+            <input type="radio"
+                   [(ngModel)]="myAnswer"
+                   value="{{option}}">
+            {{option}}
+          </label>
+          <label [hidden]="questionIndex != 2">
+            <input type="checkbox"
+                   [(ngModel)]="option.checked"
+                   (change)="onToggle()"
+                   value="{{option.value}}">
+            {{option.value}}
+          </label>
+        </ng-container>
+      </ng-container>
+      <p>
+        <app-answer [stepData]="stepData"
+                    [answersArr]="answersArr"
+                    [questionIndex]="questionIndex"></app-answer>
+      </p>
+    </div>
+    <div class="btns-block">
+      <button class="btn" (click)="onSubmit()">Submit</button>
+      <button class="btn btn-next" (click)="nextStep()">Next</button>
+    </div>
+  </div>
+</section>
+

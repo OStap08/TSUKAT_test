@@ -1,0 +1,29 @@
+<section>
+  <div class="menu">
+    <button class="btn menu-btn">Menu</button>
+    <div class="menu-dropdown">
+      <ng-container *ngFor="let stepData of allSteps; let idx = index;">
+        <div class="menu-item">
+          <button class="btn" (click)="openQuestion(idx)"> Question {{idx + 1}}</button>
+          <div class="menu-answers">
+            <app-answer [stepData]="stepData"
+                        [answersArr]="answersArr"
+                        [questionIndex]="idx"
+                        [withMyAnswer]="true">
+            </app-answer>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  <ng-container *ngFor="let stepData of allSteps; let idx = index;">
+    <app-step *ngIf="questionIndex === idx"
+              [stepData]="stepData"
+              [answersArr]="answersArr"
+              [questionIndex]="idx"
+              [stepsLength]="allSteps.length"
+              (changeIndex)="changeIndex($event)"
+    ></app-step>
+  </ng-container>
+</section>
+

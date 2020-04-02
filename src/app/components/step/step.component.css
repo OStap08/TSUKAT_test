@@ -1,0 +1,59 @@
+.step-section{
+  display: flex;
+  padding: 10px;
+}
+.image-block{
+  width: 70%;
+}
+.grid{
+  display: grid;
+  grid-template-columns: 300px 300px;
+  grid-template-rows: 300px 300px;
+  grid-gap: 20px;
+}
+.image-block img{
+  max-width:300px;
+  height: 300px;
+  object-fit: cover;
+}
+.cursor-pointer{
+  cursor: pointer;
+}
+.cursor-pointer:hover{
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+.question-block{
+  width: 30%;
+  min-height: calc(100vh - 98px);
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.steps{
+  height: 10px;
+  width: 33%;
+  display: inline-block;
+  background: grey;
+  border-right: 1px solid white;
+}
+.steps.active{
+  background: blue;
+}
+.steps.question-is-true{
+  background: green;
+}
+.steps.question-is-false{
+  background: red;
+}
+.btns-block{
+  margin-top: 30px;
+}
+.btn{
+  display: block;
+  width: 100%;
+  border-radius: 0;
+}
+.btn.btn-next{
+  margin-top: 5px;
+  background: blue;
+}

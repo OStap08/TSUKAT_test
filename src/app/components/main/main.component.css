@@ -1,0 +1,28 @@
+.menu{
+  box-shadow: 0 1px 5px -2px rgba(0,0,0,0.5);
+  padding: 10px 30px;
+  margin-bottom: 20px;
+}
+.menu-btn:hover ~ .menu-dropdown,
+.menu-dropdown:hover{
+  display: block;
+}
+.menu-dropdown{
+  display: none;
+  position: absolute;
+  top: 47px;
+  left: 10px;
+  background: white;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.menu-dropdown .menu-item:not(:last-child) .btn{
+  margin-bottom: 10px;
+}
+.menu-dropdown .menu-item .btn{
+  margin-right: 10px;
+}
+.menu-answers{
+  display: inline-block;
+}

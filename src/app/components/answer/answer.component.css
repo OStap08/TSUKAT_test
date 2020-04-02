@@ -1,0 +1,15 @@
+.answer-in-img{
+  max-width: 300px;
+  height: 300px;
+  object-fit: cover;
+}
+.answer-in-img.all-answer-in-img{
+  max-width: 100px;
+  height: 100px;
+}
+.block-with-img{
+  display: flex;
+}
+.block-with-img div:not(:first-child){
+  margin-left: 10px;
+}

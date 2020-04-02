@@ -1,0 +1,36 @@
+<ng-container *ngIf="answersArr[questionIndex].myAnswer.length">
+ <ng-container *ngIf="stepData.answers">
+   Правильна відповідь:
+   <ng-container *ngFor="let answer of stepData.answers">
+     <span> {{answer}} </span>
+   </ng-container>
+   <ng-container *ngIf="withMyAnswer">
+     Ваша відповідь:
+     <ng-container *ngFor="let myAnswer of answersArr[questionIndex].myAnswer">
+       <span> {{myAnswer}} </span>
+     </ng-container>
+   </ng-container>
+ </ng-container>
+</ng-container>
+<ng-container *ngIf="answersArr[questionIndex].myAnswer">
+  <ng-container *ngIf="stepData.answer && questionIndex != 1">
+    <span>Правильна відповідь: {{stepData.answer}} </span>
+    <ng-container *ngIf="withMyAnswer">
+      <span>Ваша відповідь: {{answersArr[questionIndex].myAnswer}}</span>
+    </ng-container>
+  </ng-container>
+  <ng-container *ngIf="stepData.answer && questionIndex === 1">
+    <div class="block-with-img">
+      <div>
+        <div>Правильна відповідь:</div>
+        <img class="answer-in-img" src="{{stepData.answer}}" alt="" [ngClass]="{'all-answer-in-img': withMyAnswer}">
+      </div>
+      <ng-container *ngIf="withMyAnswer">
+        <div>
+          <div>Ваша відповідь:</div>
+          <img class="answer-in-img" src="{{answersArr[questionIndex].myAnswer}}" alt="" [ngClass]="{'all-answer-in-img': withMyAnswer}">
+        </div>
+      </ng-container>
+    </div>
+  </ng-container>
+</ng-container>
